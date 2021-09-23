@@ -1,0 +1,1448 @@
+<!DOCTYPE html>
+
+<head>
+    <title>ET VIRIDI</title>
+
+    <!--META TAGS-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="About The Organization">
+    <meta name="keywords" content="">
+
+    {% load static %}
+
+<!-- use django static tag ton load js file and css file. -->
+    <script src="{% static 'js/main.js' %}"></script>
+
+
+    <!--EXTERNAL CSS-->
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+
+    <!-- Lightbox CSS -->
+    <link rel="stylesheet" href="{% static 'css/lightbox.min.css' %}">
+
+    <!--BOOTSTRAP-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!--GOOGLE FONTS-->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2&family=Kanit:wght@500&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/4.5.6/css/ionicons.min.css">
+
+    <!--GOOGLE FONTS-->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Play&display=swap" rel="stylesheet">
+
+    <style>
+          .section ul {
+              display: flex;
+              margin-bottom: 10px;
+          }
+
+          .section ul li {
+              list-style: none;
+              background: #eee;
+              padding: 8px 20px;
+              margin: 5px;
+              letter-spacing: 1px;
+              cursor: pointer;
+          }
+
+          .section ul li.active {
+              background: green;
+              color: white;
+          }
+
+          .text-container h3 {
+              color: green;
+          }
+
+          .zoom:hover {
+              transform: scale(1.5);
+          }
+
+          a.btn {
+              background: green;
+              border-radius: 4px;
+              box-shadow: 0 2px 0px 0 rgba(0, 0, 0, 0.25);
+              color: #ffffff;
+              display: inline-block;
+              padding: 6px 30px 8px;
+              position: relative;
+              text-decoration: none;
+              transition: all 0.1s 0s ease-out;
+          }
+
+          .no-touch a.btn:hover {
+              background: #00a2ad;
+              box-shadow: 0px 8px 2px 0 rgba(0, 0, 0, 0.075);
+              transform: translateY(-2px);
+              transition: all 0.25s 0s ease-out;
+          }
+
+          .no-touch a.btn:active,
+          a.btn:active {
+              background: #008a93;
+              box-shadow: 0 1px 0px 0 rgba(255, 255, 255, 0.25);
+              transform: translate3d(0, 1px, 0);
+              transition: all 0.025s 0s ease-out;
+          }
+
+          div.cards {
+              margin: 30px 30px;
+              padding-left: 50px;
+              max-width: 2000px;
+              /* text-align: center; */
+          }
+
+          div.card {
+              background: #ffffff;
+              display: inline-block;
+              margin: 8px;
+              max-width: 250px;
+              perspective: 1000;
+              position: relative;
+              text-align: left;
+              transition: all 0.3s 0s ease-in;
+              width: 250px;
+              z-index: 1;
+          }
+
+          div.card img {
+              max-width: 250px;
+          }
+
+          div.card .card__image-holder {
+              background: rgba(0, 0, 0, 0.1);
+              height: 0;
+              padding-bottom: 75%;
+          }
+
+          div.card div.card-title {
+              background: #ffffff;
+              padding-top: 17px;
+              padding-left: 10px;
+              padding-right: 10px;
+              position: relative;
+              z-index: 0;
+          }
+
+          div.card div.card-title a.toggle-info {
+              border-radius: 32px;
+              height: 32px;
+              padding: 0;
+              position: absolute;
+              right: 15px;
+              top: 10px;
+              width: 32px;
+          }
+
+          div.card div.card-title a.toggle-info span {
+              background: #ffffff;
+              display: block;
+              height: 2px;
+              position: absolute;
+              top: 16px;
+              transition: all 0.15s 0s ease-out;
+              width: 12px;
+          }
+
+          div.card div.card-title a.toggle-info span.left {
+              right: 14px;
+              transform: rotate(45deg);
+          }
+
+          div.card div.card-title a.toggle-info span.right {
+              left: 14px;
+              transform: rotate(-45deg);
+          }
+
+          div.card div.card-title h2 {
+              font-size: 24px;
+              font-weight: 700;
+              letter-spacing: -0.05em;
+              margin: 0;
+              padding: 0;
+          }
+
+          div.card div.card-title h2 small {
+              display: block;
+              font-size: 18px;
+              font-weight: 600;
+              letter-spacing: -0.025em;
+          }
+
+          div.card div.card-description {
+              padding: 0 15px 10px;
+              position: relative;
+              font-size: 14px;
+          }
+
+          div.card div.card-actions {
+              box-shadow: 0 2px 0px 0 rgba(0, 0, 0, 0.075);
+              padding: 10px 15px 20px;
+              text-align: center;
+          }
+
+          div.card div.card-flap {
+              background: #d9d9d9;
+              position: absolute;
+              width: 100%;
+              transform-origin: top;
+              transform: rotateX(-90deg);
+          }
+
+          div.card div.flap1 {
+              transition: all 0.3s 0.3s ease-out;
+              z-index: -1;
+          }
+
+          div.card div.flap2 {
+              transition: all 0.3s 0s ease-out;
+              z-index: -2;
+          }
+
+          div.cards.showing div.card {
+              cursor: pointer;
+              opacity: 0.6;
+              transform: scale(0.88);
+          }
+
+          .no-touch div.cards.showing div.card:hover {
+              opacity: 0.94;
+              transform: scale(0.92);
+          }
+
+          div.card.show {
+              opacity: 1 !important;
+              transform: scale(1) !important;
+          }
+
+          div.card.show div.card-title a.toggle-info {
+              background: #ff6666 !important;
+          }
+
+          div.card.show div.card-title a.toggle-info span {
+              top: 15px;
+          }
+
+          div.card.show div.card-title a.toggle-info span.left {
+              right: 10px;
+          }
+
+          div.card.show div.card-title a.toggle-info span.right {
+              left: 10px;
+          }
+
+          div.card.show div.card-flap {
+              background: #ffffff;
+              transform: rotateX(0deg);
+          }
+
+          div.card.show div.flap1 {
+              transition: all 0.3s 0s ease-out;
+          }
+
+          div.card.show div.flap2 {
+              transition: all 0.3s 0.2s ease-out;
+          }
+
+          @media screen and (max-width: 400px) {
+              div.cards {
+                  padding-left: 20px;
+              }
+          }
+
+          .container5 .new-card {
+              max-width: 250px;
+              max-height: 250px;
+          }
+          .container5 .new-card {
+              width: 100%;
+          }
+      </style>
+</head>
+
+<body>
+{% load static %}
+    <header>
+        <!--NAVIGATION-->
+        <div class="topnav" id="myTopnav">
+          <a href="{% url 'home' %}" id="logo"><img src="{% static 'images/et/8.jpeg' %}"></a>
+          <a href="{% url 'about' %}"class="animate" style="font-weight: bold;">About Us</a>
+          <a href="{% url 'contact' %}" class="animate">Contact Us</a>
+          <a href="{% url 'team' %}" class="animate">Team</a>
+          <a href="{% url 'ourprojects' %}" class="animate active">Our Projects</a>
+          <a href="{% url 'home' %}" class="animate">Home</a>
+          <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
+        </div>
+    </header>
+
+    <br>
+    <div class="section">
+        <ul style="justify-content: center;">
+            <li class="list" data-filter="All" style="border-radius: 20px; background-color: green;">All</li>
+            <div class="dropdown show">
+                <li class="list btn btn-secondary dropdown-toggle" id="dropdownMenuLink" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false" data-filter="All"
+                    style="border-radius: 20px; background-color: green;">Year-wise</li>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <a class="dropdown-item list" data-filter="2021" href="#">2021</a>
+                    <a class="dropdown-item list" data-filter="2020" href="#">2020</a>
+                    <a class="dropdown-item list" data-filter="2019" href="#">2019</a>
+                    <a class="dropdown-item list" data-filter="2018" href="#">2018</a>
+                    <a class="dropdown-item list" data-filter="2017" href="#">2017</a>
+                    <a class="dropdown-item list" data-filter="2016" href="#">2016</a>
+                    <a class="dropdown-item list" data-filter="2015" href="#">2015</a>
+                </div>
+            </div>
+            <div class="dropdown show">
+                <li class="list btn btn-secondary dropdown-toggle" id="dropdownMenuLink" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false" data-filter="All"
+                    style="border-radius: 20px; background-color: green;">City-wise</li>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <a class="dropdown-item list" data-filter="Rewari" href="#">Rewari</a>
+                    <a class="dropdown-item list" data-filter="Radaur" href="#">Radaur</a>
+                    <a class="dropdown-item list" data-filter="Yamuna-nagar" href="#">Yamuna- Nagar</a>
+                    <a class="dropdown-item list" data-filter="Ladwa" href="#">Ladwa</a>
+                    <a class="dropdown-item list" data-filter="Ismailabad" href="#">Ismailabad(Kurukshetra)</a>
+                </div>
+            </div>
+        </ul>
+
+
+        <div class="container5">
+
+            <div class="row">
+                <div class="cards">
+                    <div href="{% static 'images/et/Et viridi/26-02-2015/2.jpg' %}" class="card Rewari 2015">
+                        <div class="card__image-holder">
+                            <a href="{% static 'images/et/Et viridi/26-02-2015/2.jpg' %}" data-lightbox="image-1"><img class="new-card"
+                                    src="{% static 'images/et/Et viridi/26-02-2015/2.jpg' %}" alt=""></a>
+                        </div>
+                        <div class="card-title">
+                            <a href="#" class="toggle-info btn">
+                                <span class="left"></span>
+                                <span class="right"></span>
+                            </a>
+                            <h5 style="color: green;">Planted at: New Anaj <br>Mandi</h5>
+                            <p>Date: 26-02-2015</p>
+                        </div>
+                        <div class="card-flap flap1">
+                            <div class="card-description">
+                                This grid is an attempt to make something nice that works on touch devices. Ignoring
+                                hover states when they're not available etc.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div href="{% static 'images/et/Et viridi/12-11-2015/1.jpg' %}" class="card Rewari 2015">
+                        <div class="card__image-holder">
+                            <a href="{% static 'images/et/Et viridi/12-11-2015/1.jpg' %}" data-lightbox="image-1"><img class="new-card"
+                                    src="{% static 'images/et/Et viridi/12-11-2015/1.jpg' %}" alt=""></a>
+                        </div>
+                        <div class="card-title">
+                            <a href="#" class="toggle-info btn">
+                                <span class="left"></span>
+                                <span class="right"></span>
+                            </a>
+                            <h5 style="color: green;">Planted at: New Anaj <br> Mandi</h5>
+                            <p>Date: 12-11-2015</p>
+                        </div>
+                        <div class="card-flap flap1">
+                            <div class="card-description">
+                                This grid is an attempt to make something nice that works on touch devices. Ignoring
+                                hover states when they're not available etc.
+                            </div>
+                        </div>
+                    </div>
+                    <div href="{% static 'images/et/Et viridi/18-07-2016/1.jpg' %}" class="card Rewari 2016">
+                        <div class="card__image-holder">
+                            <a href="{% static 'images/et/Et viridi/18-07-2016/1.jpg' %}" data-lightbox="image-1"><img class="new-card"
+                                    src="{% static 'images/et/Et viridi/18-07-2016/1.jpg' %}" alt=""></a>
+                        </div>
+                        <div class="card-title">
+                            <a href="#" class="toggle-info btn">
+                                <span class="left"></span>
+                                <span class="right"></span>
+                            </a>
+                            <h5 style="color: green;">Planted at: New Anaj <br>Mandi</h5>
+                            <p>Date: 18-07-2016</p>
+                        </div>
+                        <div class="card-flap flap1">
+                            <div class="card-description">
+                                This grid is an attempt to make something nice that works on touch devices. Ignoring
+                                hover states when they're not available etc.
+                            </div>
+                        </div>
+                    </div>
+                    <div href="{% static 'images/et/Et viridi/19-07-2016/1.jpg' %}" class="card Rewari 2016">
+                        <div class="card__image-holder">
+                            <a href="{% static 'images/et/Et viridi/19-07-2016/1.jpg' %}" data-lightbox="image-1"><img class="new-card"
+                                    src="{% static 'images/et/Et viridi/19-07-2016/1.jpg' %}" alt=""></a>
+                        </div>
+                        <div class="card-title">
+                            <a href="#" class="toggle-info btn">
+                                <span class="left"></span>
+                                <span class="right"></span>
+                            </a>
+                            <h5 style="color: green;">Planted at: Cambridge School</h5>
+                            <p>Date: 19-07-2016</p>
+                        </div>
+                        <div class="card-flap flap1">
+                            <div class="card-description">
+                                This grid is an attempt to make something nice that works on touch devices. Ignoring
+                                hover states when they're not available etc.
+                            </div>
+                        </div>
+                    </div>
+                    <div href="{% static 'images/et/Et viridi/25-07-2016/1.jpg' %}" class="card Rewari 2016">
+                        <div class="card__image-holder">
+                            <a href="{% static 'images/et/Et viridi/25-07-2016/1.jpg' %}" data-lightbox="image-1"><img class="new-card"
+                                    src="{% static 'images/et/Et viridi/25-07-2016/1.jpg' %}" alt=""></a>
+                        </div>
+                        <div class="card-title">
+                            <a href="#" class="toggle-info btn">
+                                <span class="left"></span>
+                                <span class="right"></span>
+                            </a>
+                            <h5 style="color: green;">Planted at: Aneja <br>Kidoss School</h5>
+                            <p>Date: 25-07-2016</p>
+                        </div>
+                        <div class="card-flap flap1">
+                            <div class="card-description">
+                                This grid is an attempt to make something nice that works on touch devices. Ignoring
+                                hover states when they're not available etc.
+                            </div>
+                        </div>
+                    </div>
+                    <div href="https://jooinn.com/images/beautiful-plant-2.jpg" class="card Rewari 2016">
+                        <div class="card__image-holder">
+                            <a href="https://jooinn.com/images/beautiful-plant-2.jpg" data-lightbox="image-1"><img
+                                    class="new-card" src="https://jooinn.com/images/beautiful-plant-2.jpg" alt=""></a>
+                        </div>
+                        <div class="card-title">
+                            <a href="#" class="toggle-info btn">
+                                <span class="left"></span>
+                                <span class="right"></span>
+                            </a>
+                            <h5 style="color: green;">Planted at: Shishu <br>Shala Public School</h5>
+                            <p>Date: 27-07-2016</p>
+                        </div>
+                        <div class="card-flap flap1">
+                            <div class="card-description">
+                                This grid is an attempt to make something nice that works on touch devices. Ignoring
+                                hover states when they're not available etc.
+                            </div>
+                        </div>
+                    </div>
+                    <div href="{% static 'images/et/Et viridi/29-07-2016/GLH school/1.jpg' %}" class="card Rewari 2016">
+                        <div class="card__image-holder">
+                            <a href="{% static 'images/et/Et viridi/29-07-2016/GLH school/1.jpg' %}" data-lightbox="image-1"><img
+                                    class="new-card" src="{% static 'images/et/Et viridi/29-07-2016/GLH school/1.jpg' %}" alt=""></a>
+                        </div>
+                        <div class="card-title">
+                            <a href="#" class="toggle-info btn">
+                                <span class="left"></span>
+                                <span class="right"></span>
+                            </a>
+                            <h5 style="color: green;">Planted at: GLH <br> Public School</h5>
+                            <p>Date: 29-07-2016</p>
+                        </div>
+                        <div class="card-flap flap1">
+                            <div class="card-description">
+                                This grid is an attempt to make something nice that works on touch devices. Ignoring
+                                hover states when they're not available etc.
+                            </div>
+                        </div>
+                    </div>
+                    <div href="{% static 'images/et/Et viridi/29-07-2016/Somany PG college/1.jpg' %}" class="card Rewari 2016">
+                        <div class="card__image-holder">
+                            <a href="{% static 'images/et/Et viridi/29-07-2016/Somany PG college/1.jpg' %}" data-lightbox="image-1"><img
+                                    class="new-card" src="{% static 'images/et/Et viridi/29-07-2016/Somany PG college/1.jpg' %}"
+                                    alt=""></a>
+                        </div>
+                        <div class="card-title">
+                            <a href="#" class="toggle-info btn">
+                                <span class="left"></span>
+                                <span class="right"></span>
+                            </a>
+                            <h5 style="color: green;">Planted at: Somani <br> PG college
+                            </h5>
+                            <p>Date: 29-07-2016
+                            </p>
+                        </div>
+                        <div class="card-flap flap1">
+                            <div class="card-description">
+                                This grid is an attempt to make something nice that works on touch devices. Ignoring
+                                hover states when they're not available etc.
+                            </div>
+                        </div>
+                    </div>
+                    <div href="https://jooinn.com/images/beautiful-plant-2.jpg" class="card Rewari 2016">
+                        <div class="card__image-holder">
+                            <a href="https://jooinn.com/images/beautiful-plant-2.jpg" data-lightbox="image-1"><img
+                                    class="new-card" src="https://jooinn.com/images/beautiful-plant-2.jpg" alt=""></a>
+                        </div>
+                        <div class="card-title">
+                            <a href="#" class="toggle-info btn">
+                                <span class="left"></span>
+                                <span class="right"></span>
+                            </a>
+                            <h5 style="color: green;">Planted at: Kidzee <br>School
+                            </h5>
+                            <p>Date: 29-07-2016
+                            </p>
+                        </div>
+                        <div class="card-flap flap1">
+                            <div class="card-description">
+                                This grid is an attempt to make something nice that works on touch devices. Ignoring
+                                hover states when they're not available etc.
+                            </div>
+                        </div>
+                    </div>
+                    <div href="https://imgs.mi9.com/uploads/flower/4354/2010-spring-wallpaper_1920x1200_76652.jpg"
+                        class="card Rewari 2016">
+                        <div class="card__image-holder">
+                            <a href="https://imgs.mi9.com/uploads/flower/4354/2010-spring-wallpaper_1920x1200_76652.jpg"
+                                data-lightbox="image-1"><img class="new-card"
+                                    src="https://imgs.mi9.com/uploads/flower/4354/2010-spring-wallpaper_1920x1200_76652.jpg"
+                                    alt=""></a>
+                        </div>
+                        <div class="card-title">
+                            <a href="#" class="toggle-info btn">
+                                <span class="left"></span>
+                                <span class="right"></span>
+                            </a>
+                            <h5 style="color: green;">Planted at: Mothers <br>Pride School
+                            </h5>
+                            <p>Date: 29-07-2016
+                            </p>
+                        </div>
+                        <div class="card-flap flap1">
+                            <div class="card-description">
+                                This grid is an attempt to make something nice that works on touch devices. Ignoring
+                                hover states when they're not available etc.
+                            </div>
+                        </div>
+                    </div>
+                    <div href="{% static 'images/et/Et viridi/04-08-2016/Govt polytechnic lisana/1.jpg' %}" class="card Rewari 2016">
+                        <div class="card__image-holder">
+                            <a href="{% static 'images/et/Et viridi/04-08-2016/Govt polytechnic lisana/1.jpg' %}"
+                                data-lightbox="image-1"><img class="new-card"
+                                    src="{% static 'images/et/Et viridi/04-08-2016/Govt polytechnic lisana/1.jpg' %}" alt=""></a>
+                        </div>
+                        <div class="card-title">
+                            <a href="#" class="toggle-info btn">
+                                <span class="left"></span>
+                                <span class="right"></span>
+                            </a>
+                            <h5 style="color: green;">Planted at: Govt. <br>Polytechnic, Lisana
+                            </h5>
+                            <p>Date: 04-08-2016
+                            </p>
+                        </div>
+                        <div class="card-flap flap1">
+                            <div class="card-description">
+                                This grid is an attempt to make something nice that works on touch devices. Ignoring
+                                hover states when they're not available etc.
+                            </div>
+                        </div>
+                    </div>
+                    <div href="{% static 'images/et/Et viridi/04-08-2016/Swami uma bharti school/1.JPG' %}" class="card Rewari 2016">
+                        <div class="card__image-holder">
+                            <a href="{% static 'images/et/Et viridi/04-08-2016/Swami uma bharti school/1.JPG' %}"
+                                data-lightbox="image-1"><img class="new-card"
+                                    src="{% static 'images/et/Et viridi/04-08-2016/Swami uma bharti school/1.JPG' %}" alt=""></a>
+                        </div>
+                        <div class="card-title">
+                            <a href="#" class="toggle-info btn">
+                                <span class="left"></span>
+                                <span class="right"></span>
+                            </a>
+                            <h5 style="color: green;">Planted at: Swami <br>Uma Bharti School
+                            </h5>
+                            <p>Date: 04-08-2016
+                            </p>
+                        </div>
+                        <div class="card-flap flap1">
+                            <div class="card-description">
+                                This grid is an attempt to make something nice that works on touch devices. Ignoring
+                                hover states when they're not available etc.
+                            </div>
+                        </div>
+                    </div>
+                    <div href="https://jooinn.com/images/beautiful-plant-2.jpg" class="card Rewari 2016">
+                        <div class="card__image-holder">
+                            <a href="https://jooinn.com/images/beautiful-plant-2.jpg" data-lightbox="image-1"><img
+                                    class="new-card" src="https://jooinn.com/images/beautiful-plant-2.jpg" alt=""></a>
+                        </div>
+                        <div class="card-title">
+                            <a href="#" class="toggle-info btn">
+                                <span class="left"></span>
+                                <span class="right"></span>
+                            </a>
+                            <h5 style="color: green;">Planted at: Jain <br>Public School
+                            </h5>
+                            <p>Date: 04-08-2016
+                            </p>
+                        </div>
+                        <div class="card-flap flap1">
+                            <div class="card-description">
+                                This grid is an attempt to make something nice that works on touch devices. Ignoring
+                                hover states when they're not available etc.
+                            </div>
+                        </div>
+                    </div>
+                    <div href="{% static 'images/et/Et viridi/17-09-2016/Ahir college/1.jpg' %}" class="card Rewari 2016">
+                        <div class="card__image-holder">
+                            <a href="{% static 'images/et/Et viridi/17-09-2016/Ahir college/1.jpg' %}" data-lightbox="image-1"><img
+                                    class="new-card" src="{% static 'images/et/Et viridi/17-09-2016/Ahir college/1.jpg' %}" alt=""></a>
+                        </div>
+                        <div class="card-title">
+                            <a href="#" class="toggle-info btn">
+                                <span class="left"></span>
+                                <span class="right"></span>
+                            </a>
+                            <h5 style="color: green;">Planted at: Ahir <br>College, Rewari
+                            </h5>
+                            <p>Date: 17-09-2016
+                            </p>
+                        </div>
+                        <div class="card-flap flap1">
+                            <div class="card-description">
+                                This grid is an attempt to make something nice that works on touch devices. Ignoring
+                                hover states when they're not available etc.
+                            </div>
+                        </div>
+                    </div>
+                    <div href="{% static 'images/et/Et viridi/07-03-2017/1.jpg' %}" class="card Rewari 2017">
+                        <div class="card__image-holder">
+                            <a href="{% static 'images/et/Et viridi/07-03-2017/1.jpg' %}" data-lightbox="image-1"><img class="new-card"
+                                    src="{% static 'images/et/Et viridi/07-03-2017/1.jpg' %}" alt=""></a>
+                        </div>
+                        <div class="card-title">
+                            <a href="#" class="toggle-info btn">
+                                <span class="left"></span>
+                                <span class="right"></span>
+                            </a>
+                            <h5 style="color: green;">Planted at: Govt. <br>Polytechnic Lisana
+                            </h5>
+                            <p>Date: 07-03-2017
+                            </p>
+                        </div>
+                        <div class="card-flap flap1">
+                            <div class="card-description">
+                                This grid is an attempt to make something nice that works on touch devices. Ignoring
+                                hover states when they're not available etc.
+                            </div>
+                        </div>
+                    </div>
+                    <div href="{% static 'images/et/Et viridi/15-03-2017/1.jpg' %}" class="card Rewari 2017">
+                        <div class="card__image-holder">
+                            <a href="{% static 'images/et/Et viridi/15-03-2017/1.jpg' %}"data-lightbox="image-1"><img class="new-card"
+                                    src="{% static 'images/et/Et viridi/15-03-2017/1.jpg' %}" alt=""></a>
+                        </div>
+                        <div class="card-title">
+                            <a href="#" class="toggle-info btn">
+                                <span class="left"></span>
+                                <span class="right"></span>
+                            </a>
+                            <h5 style="color: green;">Planted at: Govt. <br>Polytechnic Lisana
+                            </h5>
+                            <p>Date: 15-03-2017
+                            </p>
+                        </div>
+                        <div class="card-flap flap1">
+                            <div class="card-description">
+                                This grid is an attempt to make something nice that works on touch devices. Ignoring
+                                hover states when they're not available etc.
+                            </div>
+                        </div>
+                    </div>
+                    <div href="{% static 'images/et/Et viridi/10-07-2017/1.jpg' %}" class="card Rewari 2017">
+                        <div class="card__image-holder">
+                            <a href="{% static 'images/et/Et viridi/10-07-2017/1.jpg' %}" data-lightbox="image-1"><img class="new-card"
+                                    src="{% static 'images/et/Et viridi/10-07-2017/1.jpg' %}" alt=""></a>
+                        </div>
+                        <div class="card-title">
+                            <a href="#" class="toggle-info btn">
+                                <span class="left"></span>
+                                <span class="right"></span>
+                            </a>
+                            <h5 style="color: green;">Planted at: Cambridge <br>School
+                            </h5>
+                            <p>Date: 10-07-2017
+                            </p>
+                        </div>
+                        <div class="card-flap flap1">
+                            <div class="card-description">
+                                This grid is an attempt to make something nice that works on touch devices. Ignoring
+                                hover states when they're not available etc.
+                            </div>
+                        </div>
+                    </div>
+                    <div href="https://jooinn.com/images/beautiful-plant-2.jpg" class="card Rewari 2017">
+                        <div class="card__image-holder">
+                            <a href="https://jooinn.com/images/beautiful-plant-2.jpg" data-lightbox="image-1"><img
+                                    class="new-card" src="https://jooinn.com/images/beautiful-plant-2.jpg" alt=""></a>
+                        </div>
+                        <div class="card-title">
+                            <a href="#" class="toggle-info btn">
+                                <span class="left"></span>
+                                <span class="right"></span>
+                            </a>
+                            <h5 style="color: green;">Planted at: Temple <br>Anaj Mandi
+                            </h5>
+                            <p>Date: 18-07-2017
+                            </p>
+                        </div>
+                        <div class="card-flap flap1">
+                            <div class="card-description">
+                                This grid is an attempt to make something nice that works on touch devices. Ignoring
+                                hover states when they're not available etc.
+                            </div>
+                        </div>
+                    </div>
+                    <div href="{% static 'images/et/Et viridi/05-09-2017/1.jpg' %}" class="card Rewari 2017">
+                        <div class="card__image-holder">
+                            <a href="{% static 'images/et/Et viridi/05-09-2017/1.jpg' %}" data-lightbox="image-1"><img class="new-card"
+                                    src="{% static 'images/et/Et viridi/05-09-2017/1.jpg' %}" alt=""></a>
+                        </div>
+                        <div class="card-title">
+                            <a href="#" class="toggle-info btn">
+                                <span class="left"></span>
+                                <span class="right"></span>
+                            </a>
+                            <h5 style="color: green;">Planted at: Govt. <br>Polytechnic Lisana
+                            </h5>
+                            <p>Date: 05-09-2017
+                            </p>
+                        </div>
+                        <div class="card-flap flap1">
+                            <div class="card-description">
+                                This grid is an attempt to make something nice that works on touch devices. Ignoring
+                                hover states when they're not available etc.
+                            </div>
+                        </div>
+                    </div>
+                    <div href="https://jooinn.com/images/beautiful-plant-2.jpg" class="card Rewari 2017">
+                        <div class="card__image-holder">
+                            <a href="https://jooinn.com/images/beautiful-plant-2.jpg" data-lightbox="image-1"><img
+                                    class="new-card" src="https://jooinn.com/images/beautiful-plant-2.jpg" alt=""></a>
+                        </div>
+                        <div class="card-title">
+                            <a href="#" class="toggle-info btn">
+                                <span class="left"></span>
+                                <span class="right"></span>
+                            </a>
+                            <h5 style="color: green;">Planted at: New <br>Anaj Mandi
+                            </h5>
+                            <p>Date: 02-07-2017
+                            </p>
+                        </div>
+                        <div class="card-flap flap1">
+                            <div class="card-description">
+                                This grid is an attempt to make something nice that works on touch devices. Ignoring
+                                hover states when they're not available etc.
+                            </div>
+                        </div>
+                    </div>
+                    <div href="{% static 'images/et/Et viridi/01-04-2018/1.jpg' %}" class="card Rewari 2018">
+                        <div class="card__image-holder">
+                            <a href="{% static 'images/et/Et viridi/01-04-2018/1.jpg' %}" data-lightbox="image-1"><img class="new-card"
+                                    src="{% static 'images/et/Et viridi/01-04-2018/1.jpg' %}" alt=""></a>
+                        </div>
+                        <div class="card-title">
+                            <a href="#" class="toggle-info btn">
+                                <span class="left"></span>
+                                <span class="right"></span>
+                            </a>
+                            <h5 style="color: green;">Planted at: New <br>Anaj Mandi
+                            </h5>
+                            <p>Date: 01-04-2018
+                            </p>
+                        </div>
+                        <div class="card-flap flap1">
+                            <div class="card-description">
+                                This grid is an attempt to make something nice that works on touch devices. Ignoring
+                                hover states when they're not available etc.
+                            </div>
+                        </div>
+                    </div>
+                    <div href="{% static 'images/et/Et viridi/03-04-2018/1.jpg' %}" class="card Rewari 2018">
+                        <div class="card__image-holder">
+                            <a href="{% static 'images/et/Et viridi/03-04-2018/1.jpg' %}" data-lightbox="image-1"><img class="new-card"
+                                    src="{% static 'images/et/Et viridi/03-04-2018/1.jpg' %}" alt=""></a>
+                        </div>
+                        <div class="card-title">
+                            <a href="#" class="toggle-info btn">
+                                <span class="left"></span>
+                                <span class="right"></span>
+                            </a>
+                            <h5 style="color: green;">Planted at: Govt. <br>Polytechnic Lisana
+                            </h5>
+                            <p>Date: 03-04-2018
+                            </p>
+                        </div>
+                        <div class="card-flap flap1">
+                            <div class="card-description">
+                                This grid is an attempt to make something nice that works on touch devices. Ignoring
+                                hover states when they're not available etc.
+                            </div>
+                        </div>
+                    </div>
+                    <div href="{% static 'images/et/Et viridi/05-06-2018/1.jpg' %}" class="card Rewari 2018">
+                        <div class="card__image-holder">
+                            <a href="{% static 'images/et/Et viridi/05-06-2018/1.jpg' %}" data-lightbox="image-1"><img class="new-card"
+                                    src="{% static 'images/et/Et viridi/05-06-2018/1.jpg' %}" alt=""></a>
+                        </div>
+                        <div class="card-title">
+                            <a href="#" class="toggle-info btn">
+                                <span class="left"></span>
+                                <span class="right"></span>
+                            </a>
+                            <h5 style="color: green;">Planted at: Cambridge <br>School
+                            </h5>
+                            <p>Date: 05-06-2018
+                            </p>
+                        </div>
+                        <div class="card-flap flap1">
+                            <div class="card-description">
+                                This grid is an attempt to make something nice that works on touch devices. Ignoring
+                                hover states when they're not available etc.
+                            </div>
+                        </div>
+                    </div>
+                    <div href="{% static 'images/et/Et viridi/12-06-2018/Cambridge school project/11.jpg' %}" class="card Rewari 2018">
+                        <div class="card__image-holder">
+                            <a href="{% static 'images/et/Et viridi/12-06-2018/Cambridge school project/11.jpg' %}"
+                                data-lightbox="image-1"><img class="new-card"
+                                    src="{% static 'images/et/Et viridi/12-06-2018/Cambridge school project/11.jpg' %}" alt=""></a>
+                        </div>
+                        <div class="card-title">
+                            <a href="#" class="toggle-info btn">
+                                <span class="left"></span>
+                                <span class="right"></span>
+                            </a>
+                            <h5 style="color: green;">Planted at: Cambridge <br>School
+                            </h5>
+                            <p>Date: 12-06-2018
+                            </p>
+                        </div>
+                        <div class="card-flap flap1">
+                            <div class="card-description">
+                                This grid is an attempt to make something nice that works on touch devices. Ignoring
+                                hover states when they're not available etc.
+                            </div>
+                        </div>
+                    </div>
+                    <div href="{% static 'images/et/Et viridi/12-06-2018/Somany PG college/1.jpg' %}" class="card Rewari 2018">
+                        <div class="card__image-holder">
+                            <a href="{% static 'images/et/Et viridi/12-06-2018/Somany PG college/1.jpg' %}" data-lightbox="image-1"><img
+                                    class="new-card" src="{% static 'images/et/Et viridi/12-06-2018/Somany PG college/1.jpg' %}"
+                                    alt=""></a>
+                        </div>
+                        <div class="card-title">
+                            <a href="#" class="toggle-info btn">
+                                <span class="left"></span>
+                                <span class="right"></span>
+                            </a>
+                            <h5 style="color: green;">Planted at: Somany <br>PG School
+                            </h5>
+                            <p>Date: 12-06-2018
+                            </p>
+                        </div>
+                        <div class="card-flap flap1">
+                            <div class="card-description">
+                                This grid is an attempt to make something nice that works on touch devices. Ignoring
+                                hover states when they're not available etc.
+                            </div>
+                        </div>
+                    </div>
+                    <div href="{% static 'images/et/Et viridi/14-07-2018/1.jpg' %}" class="card Rewari 2018">
+                        <div class="card__image-holder">
+                            <a href="{% static 'images/et/Et viridi/14-07-2018/1.jpg' %}" data-lightbox="image-1"><img
+                                    class="new-card" src="{% static 'images/et/Et viridi/14-07-2018/1.jpg' %}"
+                                    alt=""></a>
+                        </div>
+                        <div class="card-title">
+                            <a href="#" class="toggle-info btn">
+                                <span class="left"></span>
+                                <span class="right"></span>
+                            </a>
+                            <h5 style="color: green;">Planted at: BLISS<br>Kidzee School
+                            </h5>
+                            <p>Date: 14-07-2018
+                            </p>
+                        </div>
+                        <div class="card-flap flap1">
+                            <div class="card-description">
+                                This grid is an attempt to make something nice that works on touch devices. Ignoring
+                                hover states when they're not available etc.
+                            </div>
+                        </div>
+                    </div>
+                    <div href="{% static 'images/et/Et viridi/16-07-2018/1.jpg' %}" class="card Rewari 2018">
+                        <div class="card__image-holder">
+                            <a href="{% static 'images/et/Et viridi/16-07-2018/1.jpg' %}" data-lightbox="image-1"><img
+                                    class="new-card" src="{% static 'images/et/Et viridi/16-07-2018/1.jpg' %}"
+                                    alt=""></a>
+                        </div>
+                        <div class="card-title">
+                            <a href="#" class="toggle-info btn">
+                                <span class="left"></span>
+                                <span class="right"></span>
+                            </a>
+                            <h5 style="color: green;">Planted at: Aadhar <br>Toddlers School
+                            </h5>
+                            <p>Date: 16-07-2018
+                            </p>
+                        </div>
+                        <div class="card-flap flap1">
+                            <div class="card-description">
+                                This grid is an attempt to make something nice that works on touch devices. Ignoring
+                                hover states when they're not available etc.
+                            </div>
+                        </div>
+                    </div>
+                    <div href="{% static 'images/et/Et viridi/17-07-2018/1.jpg' %}" class="card Rewari 2018">
+                        <div class="card__image-holder">
+                            <a href="{% static 'images/et/Et viridi/17-07-2018/1.jpg' %}" data-lightbox="image-1"><img
+                                    class="new-card" src="{% static 'images/et/Et viridi/17-07-2018/1.jpg' %}"
+                                    alt=""></a>
+                        </div>
+                        <div class="card-title">
+                            <a href="#" class="toggle-info btn">
+                                <span class="left"></span>
+                                <span class="right"></span>
+                            </a>
+                            <h5 style="color: green;">Planted at: Aneja <br>Kidoss School
+                            </h5>
+                            <p>Date: 17-07-2018
+                            </p>
+                        </div>
+                        <div class="card-flap flap1">
+                            <div class="card-description">
+                                This grid is an attempt to make something nice that works on touch devices. Ignoring
+                                hover states when they're not available etc.
+                            </div>
+                        </div>
+                    </div>
+                    <div href="{% static 'images/et/Et viridi/19-07-2018/1.jpg' %}" class="card Rewari 2018">
+                        <div class="card__image-holder">
+                            <a href="{% static 'images/et/Et viridi/19-07-2018/1.jpg' %}" data-lightbox="image-1"><img
+                                    class="new-card" src="{% static 'images/et/Et viridi/19-07-2018/1.jpg' %}"
+                                    alt=""></a>
+                        </div>
+                        <div class="card-title">
+                            <a href="#" class="toggle-info btn">
+                                <span class="left"></span>
+                                <span class="right"></span>
+                            </a>
+                            <h5 style="color: green;">Planted at: Jain <br>Public School
+                            </h5>
+                            <p>Date: 19-07-2018
+                            </p>
+                        </div>
+                        <div class="card-flap flap1">
+                            <div class="card-description">
+                                This grid is an attempt to make something nice that works on touch devices. Ignoring
+                                hover states when they're not available etc.
+                            </div>
+                        </div>
+                    </div>
+                    <div href="{% static 'images/et/Et viridi/21-07-2018/1.jpg' %}" class="card Rewari 2018">
+                        <div class="card__image-holder">
+                            <a href="{% static 'images/et/Et viridi/21-07-2018/1.jpg' %}" data-lightbox="image-1"><img
+                                    class="new-card" src="{% static 'images/et/Et viridi/21-07-2018/1.jpg' %}"
+                                    alt=""></a>
+                        </div>
+                        <div class="card-title">
+                            <a href="#" class="toggle-info btn">
+                                <span class="left"></span>
+                                <span class="right"></span>
+                            </a>
+                            <h5 style="color: green;">Planted at: Uma <br>Bharti School
+                            </h5>
+                            <p>Date: 21-07-2018
+                            </p>
+                        </div>
+                        <div class="card-flap flap1">
+                            <div class="card-description">
+                                This grid is an attempt to make something nice that works on touch devices. Ignoring
+                                hover states when they're not available etc.
+                            </div>
+                        </div>
+                    </div>
+                    <div href="{% static 'images/et/Et viridi/26-03-2019/1.jpg' %}" class="card Rewari 2019">
+                        <div class="card__image-holder">
+                            <a href="{% static 'images/et/Et viridi/26-03-2019/1.jpg' %}" data-lightbox="image-1"><img
+                                    class="new-card" src="{% static 'images/et/Et viridi/26-03-2019/1.jpg' %}"
+                                    alt=""></a>
+                        </div>
+                        <div class="card-title">
+                            <a href="#" class="toggle-info btn">
+                                <span class="left"></span>
+                                <span class="right"></span>
+                            </a>
+                            <h5 style="color: green;">Planted at: New <br>Grain Market
+                            </h5>
+                            <p>Date: 26-03-2019
+                            </p>
+                        </div>
+                        <div class="card-flap flap1">
+                            <div class="card-description">
+                                This grid is an attempt to make something nice that works on touch devices. Ignoring
+                                hover states when they're not available etc.
+                            </div>
+                        </div>
+                    </div>
+                    <div href="{% static 'images/et/Et viridi/01-04-2019/1.jpg' %}" class="card Rewari 2019">
+                        <div class="card__image-holder">
+                            <a href="{% static 'images/et/Et viridi/01-04-2019/1.jpg' %}" data-lightbox="image-1"><img
+                                    class="new-card" src="{% static 'images/et/Et viridi/01-04-2019/1.jpg' %}"
+                                    alt=""></a>
+                        </div>
+                        <div class="card-title">
+                            <a href="#" class="toggle-info btn">
+                                <span class="left"></span>
+                                <span class="right"></span>
+                            </a>
+                            <h5 style="color: green;">Planted at: Cambridge <br>School
+                            </h5>
+                            <p>Date: 01-04-2019
+                            </p>
+                        </div>
+                        <div class="card-flap flap1">
+                            <div class="card-description">
+                                This grid is an attempt to make something nice that works on touch devices. Ignoring
+                                hover states when they're not available etc.
+                            </div>
+                        </div>
+                    </div>
+                    <div href="{% static 'images/et/Et viridi/05-06-2019/1.jpg' %}" class="card Rewari 2019">
+                        <div class="card__image-holder">
+                            <a href="{% static 'images/et/Et viridi/05-06-2019/1.jpg' %}" data-lightbox="image-1"><img
+                                    class="new-card" src="{% static 'images/et/Et viridi/05-06-2019/1.jpg' %}"
+                                    alt=""></a>
+                        </div>
+                        <div class="card-title">
+                            <a href="#" class="toggle-info btn">
+                                <span class="left"></span>
+                                <span class="right"></span>
+                            </a>
+                            <h5 style="color: green;">Planted at: Park New <br>Grain Market
+                            </h5>
+                            <p>Date: 05-06-2019
+                            </p>
+                        </div>
+                        <div class="card-flap flap1">
+                            <div class="card-description">
+                                This grid is an attempt to make something nice that works on touch devices. Ignoring
+                                hover states when they're not available etc.
+                            </div>
+                        </div>
+                    </div>
+                    <div href="https://ichoosetobeseen.com/wp-content/uploads/2018/07/what-a-plant-knows.jpg" class="card Rewari 2019">
+                        <div class="card__image-holder">
+                            <a href="https://ichoosetobeseen.com/wp-content/uploads/2018/07/what-a-plant-knows.jpg" data-lightbox="image-1"><img
+                                    class="new-card" src="https://ichoosetobeseen.com/wp-content/uploads/2018/07/what-a-plant-knows.jpg"
+                                    alt=""></a>
+                        </div>
+                        <div class="card-title">
+                            <a href="#" class="toggle-info btn">
+                                <span class="left"></span>
+                                <span class="right"></span>
+                            </a>
+                            <h5 style="color: green;">Planted at: Garden,<br>Home
+                            </h5>
+                            <p>Date: 25-06-2019
+                            </p>
+                        </div>
+                        <div class="card-flap flap1">
+                            <div class="card-description">
+                                This grid is an attempt to make something nice that works on touch devices. Ignoring
+                                hover states when they're not available etc.
+                            </div>
+                        </div>
+                    </div>
+                    <div href="{% static 'images/et/Et viridi/07-08-2019/1.jpg' %}" class="card Radaur 2019">
+                        <div class="card__image-holder">
+                            <a href="{% static 'images/et/Et viridi/07-08-2019/1.jpg' %}" data-lightbox="image-1"><img
+                                    class="new-card" src="{% static 'images/et/Et viridi/07-08-2019/1.jpg' %}"
+                                    alt=""></a>
+                        </div>
+                        <div class="card-title">
+                            <a href="#" class="toggle-info btn">
+                                <span class="left"></span>
+                                <span class="right"></span>
+                            </a>
+                            <h5 style="color: green;">Planted at: JMIT <br>Radaur
+                            </h5>
+                            <p>Date: 07-08-2019
+                            </p>
+                        </div>
+                        <div class="card-flap flap1">
+                            <div class="card-description">
+                                This grid is an attempt to make something nice that works on touch devices. Ignoring
+                                hover states when they're not available etc.
+                            </div>
+                        </div>
+                    </div>
+                    <div href="{% static 'images/et/Et viridi/04-09-2019/1.jpg' %}" class="card Radaur 2019">
+                        <div class="card__image-holder">
+                            <a href="{% static 'images/et/Et viridi/04-09-2019/1.jpg' %}" data-lightbox="image-1"><img
+                                    class="new-card" src="{% static 'images/et/Et viridi/04-09-2019/1.jpg' %}"
+                                    alt=""></a>
+                        </div>
+                        <div class="card-title">
+                            <a href="#" class="toggle-info btn">
+                                <span class="left"></span>
+                                <span class="right"></span>
+                            </a>
+                            <h5 style="color: green;">Planted at: Govt. <br> School, Radaur
+                            </h5>
+                            <p>Date: 04-09-2019
+                            </p>
+                        </div>
+                        <div class="card-flap flap1">
+                            <div class="card-description">
+                                This grid is an attempt to make something nice that works on touch devices. Ignoring
+                                hover states when they're not available etc.
+                            </div>
+                        </div>
+                    </div>
+                    <div href="{% static 'images/et/Et viridi/04-09-2019/3.jpg' %}" class="card Radaur 2019">
+                        <div class="card__image-holder">
+                            <a href="{% static 'images/et/Et viridi/04-09-2019/3.jpg' %}" data-lightbox="image-1"><img
+                                    class="new-card" src="{% static 'images/et/Et viridi/04-09-2019/3.jpg' %}"
+                                    alt=""></a>
+                        </div>
+                        <div class="card-title">
+                            <a href="#" class="toggle-info btn">
+                                <span class="left"></span>
+                                <span class="right"></span>
+                            </a>
+                            <h5 style="color: green;">Planted at: DAV Senior <br>Secondary Public School
+                            </h5>
+                            <p>Date: 04-09-2019
+                            </p>
+                        </div>
+                        <div class="card-flap flap1">
+                            <div class="card-description">
+                                This grid is an attempt to make something nice that works on touch devices. Ignoring
+                                hover states when they're not available etc.
+                            </div>
+                        </div>
+                    </div>
+                    <div href="{% static 'images/et/Et viridi/04-09-2019/5.jpg' %}" class="card Radaur 2019">
+                        <div class="card__image-holder">
+                            <a href="{% static 'images/et/Et viridi/04-09-2019/5.jpg' %}" data-lightbox="image-1"><img
+                                    class="new-card" src="{% static 'images/et/Et viridi/04-09-2019/5.jpg' %}"
+                                    alt=""></a>
+                        </div>
+                        <div class="card-title">
+                            <a href="#" class="toggle-info btn">
+                                <span class="left"></span>
+                                <span class="right"></span>
+                            </a>
+                            <h5 style="color: green;">Planted at: Hari Om <br>School,Radaur
+                            </h5>
+                            <p>Date: 04-09-2019
+                            </p>
+                        </div>
+                        <div class="card-flap flap1">
+                            <div class="card-description">
+                                This grid is an attempt to make something nice that works on touch devices. Ignoring
+                                hover states when they're not available etc.
+                            </div>
+                        </div>
+                    </div>
+                    <div href="{% static 'images/et/Et viridi/07-09-2019/1.jpg' %}" class="card Radaur 2019">
+                        <div class="card__image-holder">
+                            <a href="{% static 'images/et/Et viridi/07-09-2019/1.jpg' %}" data-lightbox="image-1"><img
+                                    class="new-card" src="{% static 'images/et/Et viridi/07-09-2019/1.jpg' %}"
+                                    alt=""></a>
+                        </div>
+                        <div class="card-title">
+                            <a href="#" class="toggle-info btn">
+                                <span class="left"></span>
+                                <span class="right"></span>
+                            </a>
+                            <h5 style="color: green;">Planted at: Temple <br>Radaur
+                            </h5>
+                            <p>Date: 07-09-2019
+                            </p>
+                        </div>
+                        <div class="card-flap flap1">
+                            <div class="card-description">
+                                This grid is an attempt to make something nice that works on touch devices. Ignoring
+                                hover states when they're not available etc.
+                            </div>
+                        </div>
+                    </div>
+                    <div href="{% static 'images/et/Et viridi/19-10-2019/1.jpg' %}" class="card Yamuna-nagar 2019">
+                        <div class="card__image-holder">
+                            <a href="{% static 'images/et/Et viridi/19-10-2019/1.jpg' %}" data-lightbox="image-1"><img
+                                    class="new-card" src="{% static 'images/et/Et viridi/19-10-2019/1.jpg' %}"
+                                    alt=""></a>
+                        </div>
+                        <div class="card-title">
+                            <a href="#" class="toggle-info btn">
+                                <span class="left"></span>
+                                <span class="right"></span>
+                            </a>
+                            <h5 style="color: green;">Planted at: DAV School <br>Yamuna-Nagar
+                            </h5>
+                            <p>Date: 19-10-2019
+                            </p>
+                        </div>
+                        <div class="card-flap flap1">
+                            <div class="card-description">
+                                This grid is an attempt to make something nice that works on touch devices. Ignoring
+                                hover states when they're not available etc.
+                            </div>
+                        </div>
+                    </div>
+                    <div href="{% static 'images/et/Et viridi/19-10-2019/3.jpg' %}" class="card Yamuna-nagar 2019">
+                        <div class="card__image-holder">
+                            <a href="{% static 'images/et/Et viridi/19-10-2019/3.jpg' %}" data-lightbox="image-1"><img
+                                    class="new-card" src="{% static 'images/et/Et viridi/19-10-2019/3.jpg' %}"
+                                    alt=""></a>
+                        </div>
+                        <div class="card-title">
+                            <a href="#" class="toggle-info btn">
+                                <span class="left"></span>
+                                <span class="right"></span>
+                            </a>
+                            <h5 style="color: green;">Planted at: Sant Nischal <br>School, Yamuna-nagar
+                            </h5>
+                            <p>Date: 07-09-2019
+                            </p>
+                        </div>
+                        <div class="card-flap flap1">
+                            <div class="card-description">
+                                This grid is an attempt to make something nice that works on touch devices. Ignoring
+                                hover states when they're not available etc.
+                            </div>
+                        </div>
+                    </div>
+                    <div href="{% static 'images/et/Et viridi/04-02-2020/1.jpg' %}" class="card Radaur 2020">
+                        <div class="card__image-holder">
+                            <a href="{% static 'images/et/Et viridi/04-02-2020/1.jpg' %}" data-lightbox="image-1"><img
+                                    class="new-card" src="{% static 'images/et/Et viridi/04-02-2020/1.jpg' %}"
+                                    alt=""></a>
+                        </div>
+                        <div class="card-title">
+                            <a href="#" class="toggle-info btn">
+                                <span class="left"></span>
+                                <span class="right"></span>
+                            </a>
+                            <h5 style="color: green;">Planted at: JMIT <br>Radaur
+                            </h5>
+                            <p>Date: 04-02-2020
+                            </p>
+                        </div>
+                        <div class="card-flap flap1">
+                            <div class="card-description">
+                                This grid is an attempt to make something nice that works on touch devices. Ignoring
+                                hover states when they're not available etc.
+                            </div>
+                        </div>
+                    </div>
+                    <div href="{% static 'images/et/Et viridi/10-02-2020/3.jpg' %}" class="card Ladwa 2020">
+                        <div class="card__image-holder">
+                            <a href="{% static 'images/et/Et viridi/10-02-2020/3.jpg' %}" data-lightbox="image-1"><img
+                                    class="new-card" src="{% static 'images/et/Et viridi/10-02-2020/3.jpg' %}"
+                                    alt=""></a>
+                        </div>
+                        <div class="card-title">
+                            <a href="#" class="toggle-info btn">
+                                <span class="left"></span>
+                                <span class="right"></span>
+                            </a>
+                            <h5 style="color: green;">Planted at: Doon<br>Public School, Ladwa
+                            </h5>
+                            <p>Date: 10-02-2020
+                            </p>
+                        </div>
+                        <div class="card-flap flap1">
+                            <div class="card-description">
+                                This grid is an attempt to make something nice that works on touch devices. Ignoring
+                                hover states when they're not available etc.
+                            </div>
+                        </div>
+                    </div>
+                    <div href="{% static 'images/et/Et viridi/02-03-2020/1.jpg' %}" class="card Ismailabad 2020">
+                        <div class="card__image-holder">
+                            <a href="{% static 'images/et/Et viridi/02-03-2020/1.jpg' %}" data-lightbox="image-1"><img
+                                    class="new-card" src="{% static 'images/et/Et viridi/02-03-2020/1.jpg' %}"
+                                    alt=""></a>
+                        </div>
+                        <div class="card-title">
+                            <a href="#" class="toggle-info btn">
+                                <span class="left"></span>
+                                <span class="right"></span>
+                            </a>
+                            <h5 style="color: green;">Planted at: Manish <br>Papneja School
+                            </h5>
+                            <p>Date: 02-03-2020
+                            </p>
+                        </div>
+                        <div class="card-flap flap1">
+                            <div class="card-description">
+                                This grid is an attempt to make something nice that works on touch devices. Ignoring
+                                hover states when they're not available etc.
+                            </div>
+                        </div>
+                    </div>
+                    <div href="{% static 'images/et/Et viridi/09-03-2021/1.jpg' %}" class="card Yamuna-nagar 2021">
+                        <div class="card__image-holder">
+                            <a href="{% static 'images/et/Et viridi/09-03-2021/1.jpg' %}" data-lightbox="image-1"><img
+                                    class="new-card" src="{% static 'images/et/Et viridi/09-03-2021/1.jpg' %}"
+                                    alt=""></a>
+                        </div>
+                        <div class="card-title">
+                            <a href="#" class="toggle-info btn">
+                                <span class="left"></span>
+                                <span class="right"></span>
+                            </a>
+                            <h5 style="color: green;">Planted at: Swaraj<br>Sishu Niketan School
+                            </h5>
+                            <p>Date: 09-03-2021
+                            </p>
+                        </div>
+                        <div class="card-flap flap1">
+                            <div class="card-description">
+                                This grid is an attempt to make something nice that works on touch devices. Ignoring
+                                hover states when they're not available etc.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--FOOTER-->
+    <footer>
+        <div class="footer">
+            <div class="row">
+                <div class="col-md-6">
+                    <a href="https://www.facebook.com/Etviridifoundation.org/"><i class="fab fa-facebook"></i></a>
+                    <a href="https://instagram.com/etviridifoundation?utm_medium=copy_link"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.linkedin.com/company/et-viridi-foundation"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                <div class="col-md-6 contact">
+                    <h6>Contact us on:</h6>
+                    <a href="mailto:etviridifoundation@gmail.com">
+                        <h6><i class="fas fa-envelope" style="font-size: smaller;"></i> etviridi@gmail.com</h6>
+                    </a>
+                    <a href="">
+                        <h6><i class="fas fa-phone-alt" style="font-size: smaller;"></i>+911203456789</h6>
+                    </a>
+
+                </div>
+            </div>
+
+            <div class="row">
+                <ul>
+                    <li><a href="{% url 'contact' %}">Contact us</a></li>
+                    <li><a href="#">Our Services</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#">Career</a></li>
+                </ul>
+            </div>
+
+            <div class="row">
+                <div class="container">
+                    <h6>ET Viridi Copyright © 2021 Et Viridi | All rights reserved.</h6>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+        crossorigin="anonymous"></script>
+    <script src="{% static 'js/lightbox-plus-jquery.min.js' %}"></script>
+    <script src="{% static 'js/custom.js' %}"></script>
+    <script>
+        $(document).ready(function () {
+            var zindex = 10;
+
+            $("div.card").click(function (e) {
+                e.preventDefault();
+
+                var isShowing = false;
+
+                if ($(this).hasClass("show")) {
+                    isShowing = true
+                }
+
+                if ($("div.cards").hasClass("showing")) {
+                    // a card is already in view
+                    $("div.card.show")
+                        .removeClass("show");
+
+                    if (isShowing) {
+                        // this card was showing - reset the grid
+                        $("div.cards")
+                            .removeClass("showing");
+                    } else {
+                        // this card isn't showing - get in with it
+                        $(this)
+                            .css({ zIndex: zindex })
+                            .addClass("show");
+
+                    }
+
+                    zindex++;
+
+                } else {
+                    // no cards in view
+                    $("div.cards")
+                        .addClass("showing");
+                    $(this)
+                        .css({ zIndex: zindex })
+                        .addClass("show");
+
+                    zindex++;
+                }
+
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.list').click(function () {
+                const value = $(this).attr('data-filter');
+                if (value == 'All') {
+                    $('.card').show('1000');
+                }
+                else {
+                    $('.card').not('.' + value).hide('1000');
+                    $('.card').filter('.' + value).show('1000');
+                }
+            })
+        })
+
+        $('.list').click(function () {
+            $(this).addClass('active').siblings().removeClass('active');
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,468 @@
+{% load static %}
+<!DOCTYPE html>
+
+<head>
+    <title>ET VIRIDI</title>
+
+    <!--META TAGS-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="About The Organization">
+    <meta name="keywords" content="">
+
+
+
+
+
+    <!--EXTERNAL CSS-->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <!--BOOTSTRAP-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script> -->
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
+
+    <!--PLUGIN-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!--FONT AWESOME-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+
+    <!--GOOGLE FONTS-->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2&family=Kanit:wght@500&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/4.5.6/css/ionicons.min.css">
+
+    <!--GOOGLE FONTS-->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Play&display=swap" rel="stylesheet">
+</head>
+
+<body>
+{% load static %}
+    <header>
+        <!--NAVIGATION-->
+        <div class="topnav" id="myTopnav">
+            <a href="{% url 'home' %}" id="logo"><img src="{% static 'images/et/8.jpeg' %}"></a>
+            <a href="{% url 'about' %}"class="animate" style="font-weight: bold;">About Us</a>
+            <a href="{% url 'contact' %}" class="animate">Contact Us</a>
+            <a href="{% url 'team' %}" class="animate">Team</a>
+            <a href="{% url 'ourprojects' %}" class="animate">Our Projects</a>
+            <a href="{% url 'home' %}" class="animate active">Home</a>
+            <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
+        </div>
+    </header>
+
+    <div id="navbar">
+      <a href="{% url 'home' %}" id="logo"><img src="{% static 'images/et/8.jpeg' %}"></a>
+      <a href="{% url 'about' %}"class="animate">About Us</a>
+      <a href="{% url 'contact' %}" class="animate">Contact Us</a>
+      <a href="{% url 'team' %}" class="animate">Team</a>
+      <a href="{% url 'ourprojects' %}" class="animate">Our Projects</a>
+      <a href="{% url 'home' %}" class="animate active" style="font-weight: bold;">Home</a>
+    </div>
+
+    <!--CAROUSEL-->
+    <div class="content-width">
+        <div class="slideshow">
+            <div class="slideshow-items">
+                <div class="item">
+                    <div class="item-image-container">
+                        <img class="item-image" src="{% static 'images/et/2.jpeg' %}">
+                    </div>
+                    <div class="item-header">
+                        <span class="vertical-part"><b>Welcome To <em>ET VIRIDI</em></b></span>
+                    </div>
+                    <div class="item-description">
+                        <span class="vertical-part">
+                            <b>“The creation of a thousand forests is in
+                                one acorn.” - Ralph Waldo Emerson</b>
+                        </span>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="item-image-container">
+                        <img class="item-image" src="{% static 'images/et/3.jpeg' %}">
+                    </div>
+                    <div class="item-header">
+                        <span class="vertical-part"><b>Welcome To <em>ET VIRIDI</em></b></span>
+                    </div>
+                    <div class="item-description">
+                        <span class="vertical-part">
+                            <b> “People who will not sustain trees will
+                                soon live in a world that will not sustain people.” - Bryce Nelson</b>
+                        </span>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="item-image-container">
+                        <img class="item-image" src="{% static 'images/et/4.jpeg' %}">
+                        <div class="item-header">
+                            <span class="vertical-part"><b>Welcome To <em>ET VIRIDI</em></b></span>
+                        </div>
+                        <div class="item-description">
+                            <span class="vertical-part">
+                                <b> “He who plants a tree. Plants a hope.”
+                                    - Lucy Larcom</b>
+                            </span>
+                            <section>
+                                <a href="#" class="btn1" data-toggle="modal" data-target="#form">PLANT MY
+                                    TREE</a> <a href="#" class="btn2" data-toggle="modal" data-target="#form1">VOLUNTEER
+                                </a>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+                <div class="controls">
+                    <ul>
+                        <li class="control" data-index="0"></li>
+                        <li class="control" data-index="1"></li>
+                        <li class="control" data-index="2"></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Plant My Tree-->
+    <div class="modal fade" id="form" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header border-bottom-0">
+                    <h3 class="modal-title" id="exampleModalLabel" style="color: green;">PLANT MY TREE</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="{% url 'plant' %}"method="post" style="margin-left : 10px; margin-right : 10px">{% csrf_token %}
+                    <ul>
+                        <li>
+                            <label for="name"><span style="color: black;">Name <span
+                                        class="required-star">*</span></span></label>
+                            <input type="text" id="name" name="NAME">
+                        </li>
+                        <li>
+                            <label for="mail"><span style="color: black;">Email <span
+                                        class="required-star">*</span></span></label>
+                            <input type="email" id="mail" name="Email">
+                        </li>
+                        <li>
+                            <label for="city"><span style="color: black;">City <span
+                                        class="required-star">*</span></span></label>
+                            <input type="text" id="city" name="City">
+                        </li>
+                        <br>
+                        <li>
+                            <button type="submit" class="button1" onclick="myFunction()" style="margin-left: 80px">PLANT NOW</button>
+                        </li>
+                        <br><br>
+                    </ul>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!--Volunteer-->
+    <div class="modal fade" id="form1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header border-bottom-0">
+                    <h4 class="modal-title" id="exampleModalLabel" style="color: green;">BECOME A VOLUNTEER</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="{% url 'volunteer' %}"method="post" style="margin-left : 10px; margin-right : 10px">{% csrf_token %}
+                    <ul>
+                        <li>
+                            <label for="name"><span style="color: black;">Name <span
+                                        class="required-star">*</span></span></label>
+                            <input type="text" id="name" name="NAME">
+                        </li>
+                        <li>
+                            <label for="mail"><span style="color: black;">Email <span
+                                        class="required-star">*</span></span></label>
+                            <input type="email" id="mail" name="Email">
+                        </li>
+                        <li>
+                            <label for="name"><span style="color: black;">City/State <span
+                                        class="required-star">*</span></span></label>
+                            <input type="text" id="city" name="CITY">
+                        </li>
+                        <li>
+                            <label for="name"><span style="color: black;">What can you do for us? <span
+                                        class="required-star">*</span></span></label>
+                                        <textarea type="text" id="help" name="HELP"></textarea>
+                        </li>
+                        <br>
+                        <li>
+                            <button type="submit" class="button1" onclick="myFunction()" style="margin-left: 80px">JOIN NOW</button>
+                        </li>
+                        <br>
+                    </ul>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!--CARDS-->
+    <div class="section-block-grey">
+        <div class="container">
+            <div class="row mt-60">
+                <div class="col-md-4 col-sm-12 col-12 inline-photo show-on-scroll">
+                    <div class="serv-section-2">
+                        <div class="serv-section-2-icon"> <img src="{% static 'images/et/1.jpeg' %}" style="border-radius: 20px;"> </div>
+                        <div class="serv-section-desc">
+                            <h4 style="color: green;">Doon Public School<br>23th June 2020</h4>
+                            <h5>We planted <b>100</b> trees on <b>23th June 2020</b> with <b>33 volunteers</b>. School
+                                staff and students take part in it. </h5>
+                            <a href="{% url 'ourprojects' %}">Read More...</a>
+                        </div>
+                        <div class="section-heading-line-left"></div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-sm-12 col-12 inline-photo show-on-scroll">
+                    <div class="serv-section-2 serv-section-2-act">
+                        <div class="serv-section-2-icon serv-section-2-icon-act"> <img src="{% static 'images/et/5.jpeg' %}"
+                                style="border-radius: 20px;"> </div>
+                        <div class="serv-section-desc">
+                            <h4 style="color: green;">Aggarsain Public School<br>25th June 2020</h4>
+                            <h5>We planted <b>100</b> trees on <b>23th June 2020</b> with <b>33 volunteers</b>. School
+                                staff and students take part in it. </h5>
+                            <a href="{% url 'ourprojects' %}">Read More...</a>
+                        </div>
+                        <div class="section-heading-line-left"></div>
+
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-12 col-12 inline-photo show-on-scroll">
+                    <div class="serv-section-2">
+                        <div class="serv-section-2-icon"> <img src="{% static 'images/et/6.jpeg' %}" style="border-radius: 20px;"> </div>
+                        <div class="serv-section-desc">
+                            <h4 style="color: green;">DAV Public School<br>30th June 2020</h4>
+                            <h5>We planted <b>100</b> trees on <b>23th June 2020</b> with <b>33 volunteers</b>. School
+                                staff and students take part in it. </h5>
+                            <a href="{% url 'ourprojects' %}">Read More...</a>
+                        </div>
+                        <div class="section-heading-line-left"></div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--SECTION1- ABOUT-->
+    <div class="how-section1 container1234">
+        <div class="row">
+            <div class="col-md-6 how-img">
+                <img src="{% static 'images/et/5.jpeg' %}" class="img-fluid inline-photo show-on-scroll" alt="" height="300px"
+                    width="300px" />
+            </div>
+            <div class="col-md-6">
+                <h4>About Our Organization</h4>
+
+                <p style="font-size: 15px;">
+
+                    Et Viridi foundation is an enviromental NGO. Et Viridi Foundation was founded in 2015 and is run by
+                    young and Passionate nature lovers. We believe in ACTION by doing as much as we can to preserve our
+                    enviroment. sitting idly, complaining, blaming the system, socities or commenting on Internet forums
+                    are THINGS WE DO NOT DO.
+                    <br>
+                    For effective change we believe in partnerships. We work together.
+                    <br><br>
+                    Increasing the green cover in the city is an important objective and we have planted over 175,000
+                    trees across the city as part of ‘Million Trees Gurgaon’. Waste has been another area of concern,
+                    something that is not sustainable at existing magnitudes. We have addressed this through educational
+                    campaigns around waste, initiatives led by children and citizens, artist installations to bring
+                    awareness amongst others.
+                </p>
+                <br>
+                <a href="{% url 'about' %}" class="btn3">READ MORE <i class="fa fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!--Slider-->
+    <div class="container6">
+        <div class="heading">
+            <h2 style="text-align: center; color: green;">Where We Plant Trees</h2>
+        </div><br>
+        <div class="slider">
+            <div class="slide-track">
+                <div class="slide">
+                    <a href="">
+                        <img src="{% static 'images/et/pic.png' %}" height="200" width="250" alt="" />
+                    </a>
+                </div>
+                <div class="slide">
+                    <a href="">
+                        <img src="{% static 'images/et/aneja kidos.jpg' %}" height="200" width="250" alt="" />
+                    </a>
+                </div>
+                <div class="slide">
+                    <img src="{% static 'images/et/aneja.jpg' %}" height="200" width="250" alt="" />
+                </div>
+                <div class="slide">
+                    <img src="{% static 'images/et/cambridge school.jpg' %}" height="200" width="250" alt="" />
+                </div>
+                <div class="slide">
+                    <img src="{% static 'images/et/Dav radaur.jpd.png' %}" height="200" width="250" alt="" />
+                </div>
+                <div class="slide">
+                    <img src="{% static 'images/et/hari-singh-public-school-rewari-logo.jpg' %}" height="200" width="250"
+                        alt="" />
+                </div>
+                <div class="slide">
+                    <img src="{% static 'images/et/jain-public-school-rewari-logo.jpg' %}" height="200" width="250"
+                        alt="" />
+                </div>
+                <div class="slide">
+                    <img src="{% static 'images/et/jmitlogo.jpg' %}" height="200" width="250" alt="" />
+                </div>
+                <div class="slide">
+                    <img src="{% static 'images/et/manish papneja ismailabad.jpd.jpg' %}" height="200" width="250"
+                        alt="" />
+                </div>
+                <div class="slide">
+                    <img src="{% static 'images/et/santnischal.jpg' %}" height="200" width="250" alt="" />
+                </div>
+                <div class="slide">
+                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/4.png" height="200" width="250"
+                        alt="" />
+                </div>
+                <div class="slide">
+                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/5.png" height="200" width="250"
+                        alt="" />
+                </div>
+                <div class="slide">
+                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/6.png" height="200" width="250"
+                        alt="" />
+                </div>
+                <div class="slide">
+                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/7.png" height="200" width="250"
+                        alt="" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <!--CONTACT FORM-->
+    <center>
+        <div class="contact-form">
+            <div class="first-container">
+                <div class="info-container">
+
+                    <div style="text-align:left;"> <img class="icon" />
+                        <h3>Get In Touch With Us</h3>
+                        <p><i class="fab fa-facebook-f" style="color:#436b95;"></i> Facebook</p>
+                        <p><i class="fab fa-instagram" style="color:#f2003c;"></i> Instagram</p>
+                        <p><i class="fab fa-youtube" style="color:red;"></i> Youtube</p>
+                    </div>
+
+                </div>
+            </div>
+            <div class="second-container">
+                <h2>Send Us A Message</h2>
+                  <form action="\send"method="post">{% csrf_token %}
+                    <div class="form-group">
+                        <label for="name-input">Tell us your name*</label>
+                        <input id="name-input" type="text" name="NAME"placeholder="First name" required="required" />
+                        <input type="text" name="lname"placeholder="Last name" required="required" />
+                    </div>
+                    <div class="form-group">
+                        <label for="email-input">Enter your email*</label>
+                        <input id="email-input" type="text"name="Email" placeholder="Eg. example@email.com" required="required" />
+                    </div>
+                    <div class="form-group">
+                        <label for="message-textarea">Message</label>
+                        <textarea id="message-textarea" name="Message"placeholder="Write us a message"></textarea>
+                    </div>
+                    <button>Send</button>
+                </form>
+            </div>
+        </div>
+    </center>
+
+
+
+    <!--FOOTER-->
+    <footer>
+        <div class="footer">
+            <div class="row">
+                <div class="col-md-6">
+                    <a href="https://www.facebook.com/Etviridifoundation.org/"><i class="fab fa-facebook"></i></a>
+                    <a href="https://instagram.com/etviridifoundation?utm_medium=copy_link"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.linkedin.com/company/et-viridi-foundation"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                <div class="col-md-6 contact">
+                    <h6>Contact us on:</h6>
+                    <a href="mailto:etviridifoundation@gmail.com">
+                        <h6><i class="fas fa-envelope" style="font-size: smaller;"></i> etviridi@gmail.com</h6>
+                    </a>
+                    <a href="">
+                        <h6><i class="fas fa-phone-alt" style="font-size: smaller;"></i>+911203456789</h6>
+                    </a>
+
+                </div>
+            </div>
+
+            <div class="row">
+                <ul>
+                    <li><a href="{% url 'contact' %}">Contact us</a></li>
+                    <li><a href="#">Our Services</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#">Career</a></li>
+                </ul>
+            </div>
+
+            <div class="row">
+                <div class="container">
+                    <h6>ET Viridi Copyright © 2021 Et Viridi | All rights reserved.</h6>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <!--FULL PAGE SEARCH-->
+    <div id="myOverlay" class="overlay">
+        <span class="closebtn" onclick="closeSearch()" title="Close Overlay">×</span>
+        <div class="overlay-content">
+            <form action="/action_page.php">
+                <input type="text" placeholder="Search.." name="search">
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
+        </div>
+    </div>
+    </div>
+
+    <!--JAVASCRIPT-->
+
+    <!-- use django static tag ton load js file and css file. -->
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+        crossorigin="anonymous"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+
+</html>

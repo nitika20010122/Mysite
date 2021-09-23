@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+  {% load static %}
+<head>
+    <title>ET VIRIDI</title>
+
+    <!--META TAGS-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="About The Organization">
+    <meta name="keywords" content="">
+
+    {% load static %}
+
+<!-- use django static tag ton load js file and css file. -->
+    <script src="{% static 'js/main.js' %}"></script>
+
+
+    <!--EXTERNAL CSS-->
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+
+    <!--BOOTSTRAP-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!--PLUGIN-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!--FONT AWESOME-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+
+    <!--GOOGLE FONTS-->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2&family=Kanit:wght@500&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/4.5.6/css/ionicons.min.css">
+
+    <!--GOOGLE FONTS-->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Play&display=swap" rel="stylesheet">
+
+    <style>
+        section ul {
+            display: flex;
+            margin-bottom: 10px;
+            margin-left: 38%;
+        }
+
+        section ul li {
+            list-style: none;
+            background: #eee;
+            padding: 8px 20px;
+            margin: 5px;
+            letter-spacing: 1px;
+            cursor: pointer;
+            color: #000;
+        }
+
+        section ul li.active {
+            background: green;
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+{% load static %}
+    <header>
+        <!--NAVIGATION-->
+        <div class="topnav" id="myTopnav">
+          <a href="{% url 'home' %}" id="logo"><img src="{% static 'images/et/8.jpeg' %}"></a>
+          <a href="{% url 'about' %}"class="animate" style="font-weight: bold;">About Us</a>
+          <a href="{% url 'contact' %}" class="animate">Contact Us</a>
+          <a href="{% url 'team' %}" class="animate active">Team</a>
+          <a href="{% url 'ourprojects' %}" class="animate">Our Projects</a>
+          <a href="{% url 'home' %}" class="animate">Home</a>
+          <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
+        </div>
+    </header>
+    <br>
+    <center>
+        <h3 style="color: green; font-size: 50px;">Meet Our Team</h3>
+    </center>
+    <section class="our-team-section">
+        <ul style="justify-content: center; margin-left: 50px;">
+            <li class="list active" data-filter="All"
+                style="border-radius: 20px; background-color: green; color: white;">All</li>
+            <li class="list" data-filter="Team" style="border-radius: 20px; background-color: green; color: white;">Team
+            </li>
+            <li class="list" data-filter="Volunteer"
+                style="border-radius: 20px; background-color: green; color: white;">Volunteer</li>
+            <div class="dropdown show">
+                <li class="list btn btn-secondary dropdown-toggle" id="dropdownMenuLink" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false" data-filter="All"
+                    style="border-radius: 20px; background-color: green;">City-wise</li>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <a class="dropdown-item list" data-filter="Rewari" href="#">Rewari</a>
+                    <a class="dropdown-item list" data-filter="Radaur" href="#">Radaur</a>
+                    <a class="dropdown-item list" data-filter="Yamunanagar" href="#">Yamuna- Nagar</a>
+                    <a class="dropdown-item list" data-filter="Ladwa" href="#">Ladwa</a>
+                    <a class="dropdown-item list" data-filter="Kurukshetra" href="#">Kurukshetra</a>
+                </div>
+            </div>
+            <li class="list" data-filter="Founder" style="border-radius: 20px; background-color: green; color: white;">
+                Founder</li>
+            <li class="list" data-filter="Mentor" style="border-radius: 20px; background-color: green; color: white;">
+                Mentor</li>
+        </ul>
+
+
+        <div class="container5">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 col-sm-6 Volunteer Kurukshetra">
+                    <div class="our-team">
+                        <div class="pic">
+                            <img src="{% static 'images/et/Teams/Aditi arora.jpg' %}">
+                        </div>
+                        <div class="team-content">
+                            <h3 class="title">Aditi Arora</h3>
+                            <h6>Volunteer</h6>
+                            <span class="post"><a href="https://www.linkedin.com/in/aditi-arora-016a9314a"
+                                    class="fab fa-linkedin"></a></span>
+                        </div>
+                        <!-- <ul class="social">
+                            <li>
+                                <a href="https://www.linkedin.com/in/aditi-arora-016a9314a" class="fab fa-linkedin"></a>
+                            </li>
+                        </ul> -->
+                    </div>
+                </div>
+
+
+                <div class="col-lg-3 col-md-6 col-sm-6 Volunteer Kurukshetra">
+                    <div class="our-team ">
+                        <div class="pic">
+                            <img src="{% static 'images/et/Teams/Akash Khokhar.jpg' %}">
+                        </div>
+                        <div class="team-content">
+                            <h3 class="title">Akash Khokhar</h3>
+                            <h6>Volunteer</h6>
+                            <span class="post"><a href="https://www.linkedin.com/in/akash-khokhar-aaa279198/"
+                                    class="fab fa-linkedin"></a></span>
+                        </div>
+                        <!-- <ul class="social">
+                            <li>
+                                <a href="https://www.linkedin.com/in/akash-khokhar-aaa279198/"
+                                    class="fab fa-linkedin"></a>
+                            </li>
+                        </ul> -->
+                    </div>
+                </div>
+
+
+                <div class="col-lg-3 col-md-6 col-sm-6 Volunteer Gurugram">
+                    <div class="our-team ">
+                        <div class="pic">
+                            <img src="{% static 'images/et/Teams/Amar Pal.jpg' %}">
+                        </div>
+                        <div class="team-content">
+                            <h3 class="title">Amar Pal</h3>
+                            <h6>Volunteer</h6>
+                            <span class="post"><a href="https://www.linkedin.com/in/amarpal11/"
+                                    class="fab fa-linkedin"></a></span>
+                        </div>
+                        <!-- <ul class="social">
+                            <li>
+                                <a href="https://www.linkedin.com/in/amarpal11/" class="fab fa-linkedin"></a>
+                            </li>
+                        </ul> -->
+                    </div>
+                </div>
+
+
+                <div class="col-lg-3 col-md-6 col-sm-6 Volunteer Rishikesh">
+                    <div class="our-team">
+                        <div class="pic">
+                            <img src="{% static 'images/et/Teams/Archit Jain.jpg' %}">
+                        </div>
+                        <div class="team-content">
+                            <h3 class="title">Archit Jain</h3>
+                            <h6>Volunteer</h6>
+                            <span class="post"><a href="https://www.linkedin.com/in/archit-jain-337a66195/"
+                                    class="fab fa-linkedin"></a></span>
+                        </div>
+                        <!-- <ul class="social">
+                            <li>
+                                <a href="https://www.linkedin.com/in/archit-jain-337a66195/"
+                                    class="fab fa-linkedin"></a>
+                            </li>
+                        </ul> -->
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 Volunteer Kurukshetra">
+                    <div class="our-team">
+                        <div class="pic">
+                            <img src="{% static 'images/et/Teams/Ayush Madan.jpg' %}">
+                        </div>
+                        <div class="team-content">
+                            <h3 class="title">Ayush Madan</h3>
+                            <h6>Volunteer</h6>
+                            <span class="post"><a href="https://www.linkedin.com/in/ayush-madan/"
+                                    class="fab fa-linkedin"></a></span>
+                        </div>
+                        <!-- <ul class="social">
+                            <li>
+                                <a href="https://www.linkedin.com/in/ayush-madan/" class="fab fa-linkedin"></a>
+                            </li>
+                        </ul> -->
+                    </div>
+                </div>
+
+
+                <div class="col-lg-3 col-md-6 col-sm-6 Volunteer Radaur">
+                    <div class="our-team ">
+                        <div class="pic">
+                            <img src="{% static 'images/et/Teams/Himanshu Sharma.jpg' %}">
+                        </div>
+                        <div class="team-content">
+                            <h3 class="title">Himanshu Sharma</h3>
+                            <h6>Volunteer</h6>
+                            <span class="post"><a href="https://www.linkedin.com/in/himanshu0047/"
+                                    class="fab fa-linkedin"></a></span>
+                        </div>
+                        <!-- <ul class="social">
+                            <li>
+                                <a href="https://www.linkedin.com/in/himanshu0047/" class="fab fa-linkedin"></a>
+                            </li>
+                        </ul> -->
+                    </div>
+                </div>
+
+
+                <div class="col-lg-3 col-md-6 col-sm-6 Volunteer Karnal">
+                    <div class="our-team ">
+                        <div class="pic">
+                            <img src="{% static 'images/et/Teams/Kriti Dhingra.jpg' %}">
+                        </div>
+                        <div class="team-content">
+                            <h3 class="title">Kriti Dhingra</h3>
+                            <h6>Volunteer</h6>
+                            <span class="post"><a href="https://www.linkedin.com/in/kriti-dhingra-b3016a1b6/"
+                                    class="fab fa-linkedin"></a></span>
+                        </div>
+                        <!-- <ul class="social">
+                            <li>
+                                <a href="https://www.linkedin.com/in/kriti-dhingra-b3016a1b6/"
+                                    class="fab fa-linkedin"></a>
+                            </li>
+                        </ul> -->
+                    </div>
+                </div>
+
+
+                <div class="col-lg-3 col-md-6 col-sm-6 Volunteer Gurugram">
+                    <div class="our-team">
+                        <div class="pic">
+                            <img src="{% static 'images/et/Teams/Manav Sharma.jpg' %}">
+                        </div>
+                        <div class="team-content">
+                            <h3 class="title">Manav Sharma</h3>
+                            <h6>Volunteer</h6>
+                            <span class="post"><a href="https://www.linkedin.com/in/manav-sharma-a917251b2/"
+                                    class="fab fa-linkedin"></a></span>
+                        </div>
+                        <!-- <ul class="social">
+                            <li>
+                                <a href="https://www.linkedin.com/in/manav-sharma-a917251b2/"
+                                    class="fab fa-linkedin"></a>
+                            </li>
+                        </ul> -->
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 Team Rewari Founder">
+                    <div class="our-team">
+                        <div class="pic">
+                            <img src="{% static 'images/et/Teams/Divye Gupta.jpg' %}">
+                        </div>
+                        <div class="team-content">
+                            <h3 class="title">Divye Gupta</h3>
+                            <h6>Founder</h6>
+                            <span class="post"><a href="https://www.linkedin.com/in/guptadivye"
+                                    class="fab fa-linkedin"></a></span>
+                        </div>
+                        <!-- <ul class="social">
+                            <li>
+                                <a href="https://www.linkedin.com/in/guptadivye" class="fab fa-linkedin"></a>
+                            </li>
+                        </ul> -->
+                    </div>
+                </div>
+
+
+
+                <div class="col-lg-3 col-md-6 col-sm-6 Team Rewari Founder">
+                    <div class="our-team ">
+                        <div class="pic">
+                            <img src="{% static 'images/et/Teams/Deeya Gupta.jpg' %}">
+                        </div>
+                        <div class="team-content">
+                            <h3 class="title">Deeya Gupta</h3>
+                            <h6>Co-Founder</h6>
+                            <span class="post"><a href="https://www.linkedin.com/in/deeya-gupta-62263a1ba/"
+                                    class="fab fa-linkedin"></a></span>
+                        </div>
+                        <!-- <ul class="social">
+                            <li>
+                                <a href="https://www.linkedin.com/in/deeya-gupta-62263a1ba/"
+                                    class="fab fa-linkedin"></a>
+                            </li>
+                        </ul> -->
+                    </div>
+                </div>
+
+
+                <div class="col-lg-3 col-md-6 col-sm-6 Volunteer Karnal">
+                    <div class="our-team ">
+                        <div class="pic">
+                            <img src="{% static 'images/et/Teams/Kriti Dhingra.jpg' %}">
+                        </div>
+                        <div class="team-content">
+                            <h3 class="title">Kriti Dhingra</h3>
+                            <h6>Volunteer</h6>
+                            <span class="post"><a href="https://www.linkedin.com/in/kriti-dhingra-b3016a1b6/"
+                                    class="fab fa-linkedin"></a></span>
+                        </div>
+                        <!-- <ul class="social">
+                            <li>
+                                <a href="https://www.linkedin.com/in/kriti-dhingra-b3016a1b6/"
+                                    class="fab fa-linkedin"></a>
+                            </li>
+                        </ul> -->
+                    </div>
+                </div>
+
+
+                <div class="col-lg-3 col-md-6 col-sm-6 Volunteer Gurugram">
+                    <div class="our-team">
+                        <div class="pic">
+                            <img src="{% static 'images/et/Teams/Manav Sharma.jpg' %}">
+                        </div>
+                        <div class="team-content">
+                            <h3 class="title">Manav Sharma</h3>
+                            <h6>Volunteer</h6>
+                            <span class="post"><a href="https://www.linkedin.com/in/manav-sharma-a917251b2/"
+                                    class="fab fa-linkedin"></a></span>
+                        </div>
+                        <!-- <ul class="social">
+                            <li>
+                                <a href="https://www.linkedin.com/in/manav-sharma-a917251b2/"
+                                    class="fab fa-linkedin"></a>
+                            </li>
+                        </ul> -->
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 Volunteer Kurukshetra">
+                    <div class="our-team">
+                        <div class="pic">
+                            <img src="{% static 'images/et/Teams/Nancy Arora.jpg' %}">
+                        </div>
+                        <div class="team-content">
+                            <h3 class="title">Nancy Arora</h3>
+                            <h6>Volunteer</h6>
+                            <span class="post"><a href="https://www.linkedin.com/in/nancy-arora-307a5012b/"
+                                    class="fab fa-linkedin"></a></span>
+                        </div>
+                        <!-- <ul class="social">
+                            <li>
+                                <a href="https://www.linkedin.com/in/nancy-arora-307a5012b/"
+                                    class="fab fa-linkedin"></a>
+                            </li>
+                        </ul> -->
+                    </div>
+                </div>
+
+
+                <div class="col-lg-3 col-md-6 col-sm-6 Team Radaur">
+                    <div class="our-team ">
+                        <div class="pic">
+                            <img src="{% static 'images/et/Teams/Nitika Sharma.jpg' %}">
+                        </div>
+                        <div class="team-content">
+                            <h3 class="title">Nitika Sharma</h3>
+                            <h6>Website Developer</h6>
+                            <span class="post"><a href="https://www.linkedin.com/in/nitika-sharma-193243193/"
+                                    class="fab fa-linkedin"></a></span>
+                        </div>
+                        <!-- <ul class="social">
+                            <li>
+                                <a href="https://www.linkedin.com/in/nitika-sharma-193243193/"
+                                    class="fab fa-linkedin"></a>
+                            </li>
+                        </ul> -->
+                    </div>
+                </div>
+
+
+                <div class="col-lg-3 col-md-6 col-sm-6 Volunteer Kurukshetra">
+                    <div class="our-team ">
+                        <div class="pic">
+                            <img src="{% static 'images/et/Teams/Nitika Suri.jpg' %}">
+                        </div>
+                        <div class="team-content">
+                            <h3 class="title">Nitika Suri</h3>
+                            <h6>Volunteer</h6>
+                            <span class="post"><a href="https://www.linkedin.com/in/nitika-suri-b23895159/"
+                                    class="fab fa-linkedin"></a></span>
+                        </div>
+                        <!-- <ul class="social">
+                            <li>
+                                <a href="https://www.linkedin.com/in/nitika-suri-b23895159/"
+                                    class="fab fa-linkedin"></a>
+                            </li>
+                        </ul> -->
+                    </div>
+                </div>
+
+
+                <div class="col-lg-3 col-md-6 col-sm-6 Volunteer Yamunanagar">
+                    <div class="our-team">
+                        <div class="pic">
+                            <img src="{% static 'images/et/Teams/Pareth Chugh.jpg' %}">
+                        </div>
+                        <div class="team-content">
+                            <h3 class="title">Parth Chugh</h3>
+                            <h6>Volunteer</h6>
+                            <span class="post"><a href="https://www.linkedin.com/in/parthchugh0208/"
+                                    class="fab fa-linkedin"></a></span>
+                        </div>
+                        <!-- <ul class="social">
+                            <li>
+                                <a href="https://www.linkedin.com/in/parthchugh0208/" class="fab fa-linkedin"></a>
+                            </li>
+                        </ul> -->
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 col-sm-6 Team Kurukshetra">
+                    <div class="our-team">
+                        <div class="pic">
+                            <img src="{% static 'images/et/Teams/Prachi Garg.jpg' %}">
+                        </div>
+                        <div class="team-content">
+                            <h3 class="title">Prachi Garg</h3>
+                            <h6>Website Developer </h6>
+                            <span class="post"><a href="https://www.linkedin.com/in/prachi-garg-00a04b18b/"
+                                    class="fab fa-linkedin"></a></span>
+                        </div>
+                        <!-- <ul class="social">
+                            <li>
+                                <a href="https://www.linkedin.com/in/prachi-garg-00a04b18b/"
+                                    class="fab fa-linkedin"></a>
+                            </li>
+                        </ul> -->
+                    </div>
+                </div>
+
+
+                <div class="col-lg-3 col-md-6 col-sm-6 Volunteer Radaur">
+                    <div class="our-team ">
+                        <div class="pic">
+                            <img src="{% static 'images/et/Teams/Rohit Sharma.jpg' %}">
+                        </div>
+                        <div class="team-content">
+                            <h3 class="title">Rohit Sharma</h3>
+                            <h6>Volunteer</h6>
+                            <span class="post"><a href="https://www.linkedin.com/in/rohit-sharma-78766a172/"
+                                    class="fab fa-linkedin"></a></span>
+                        </div>
+                        <!-- <ul class="social">
+                            <li>
+                                <a href="https://www.linkedin.com/in/rohit-sharma-78766a172/"
+                                    class="fab fa-linkedin"></a>
+                            </li>
+                        </ul> -->
+                    </div>
+                </div>
+
+
+                <div class="col-lg-3 col-md-6 col-sm-6 Team Kurukshetra">
+                    <div class="our-team ">
+                        <div class="pic">
+                            <img src="{% static 'images/et/Teams/Sheenam Goel.jpg' %}">
+                        </div>
+                        <div class="team-content">
+                            <h3 class="title">Sheenam Goel</h3>
+                            <h6>Website Developer</h6>
+                            <span class="post"><a href="https://www.linkedin.com/in/sheenam-goel-a2b24819b/"
+                                    class="fab fa-linkedin"></a></span>
+                        </div>
+                        <!-- <ul class="social">
+                            <li>
+                                <a href="https://www.linkedin.com/in/sheenam-goel-a2b24819b/"
+                                    class="fab fa-linkedin"></a>
+                            </li>
+                        </ul> -->
+                    </div>
+                </div>
+
+
+                <div class="col-lg-3 col-md-6 col-sm-6 Volunteer Karnal">
+                    <div class="our-team">
+                        <div class="pic">
+                            <img src="{% static 'images/et/Teams/Shobhit Jain.jpg' %}">
+                        </div>
+                        <div class="team-content">
+                            <h3 class="title">Shobhit Jain</h3>
+                            <h6>Volunteer</h6>
+                            <span class="post"><a href="https://www.linkedin.com/in/sj5/"
+                                    class="fab fa-linkedin"></a></span>
+                        </div>
+                        <!-- <ul class="social">
+                            <li>
+                                <a href="https://www.linkedin.com/in/sj5/" class="fab fa-linkedin"></a>
+                            </li>
+                        </ul> -->
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 col-sm-6 Volunteer Kurukshetra">
+                    <div class="our-team">
+                        <div class="pic">
+                            <img src="{% static 'images/et/Teams/Shreya Sharma.jpg' %}">
+                        </div>
+                        <div class="team-content">
+                            <h3 class="title">Shreya Sharma</h3>
+                            <h6>Volunteer </h6>
+                            <span class="post"><a href="https://www.linkedin.com/in/shreya-sharma-53584a171/"
+                                    class="fab fa-linkedin"></a></span>
+                        </div>
+                        <!-- <ul class="social">
+                            <li>
+                                <a href="https://www.linkedin.com/in/shreya-sharma-53584a171/"
+                                    class="fab fa-linkedin"></a>
+                            </li>
+                        </ul> -->
+                    </div>
+                </div>
+
+
+                <div class="col-lg-3 col-md-6 col-sm-6 Mentor Radaur">
+                    <div class="our-team ">
+                        <div class="pic">
+                            <img src="{% static 'images/et/Teams/Sonia Sharma.jpeg' %}">
+                        </div>
+                        <div class="team-content">
+                            <h3 class="title">Sonia Sharma</h3>
+                            <h6>Mentor</h6>
+                            <span class="post"><a href="linkedin.com/in/sonia-sharma-52661369"
+                                    class="fab fa-linkedin"></a></span>
+                        </div>
+                        <!-- <ul class="social">
+                            <li>
+                                <a href="linkedin.com/in/sonia-sharma-52661369" class="fab fa-linkedin"></a>
+                            </li>
+                        </ul> -->
+                    </div>
+                </div>
+
+
+                <div class="col-lg-3 col-md-6 col-sm-6 Volunteer Kurukshetra">
+                    <div class="our-team ">
+                        <div class="pic">
+                            <img src="{% static 'images/et/Teams/Sudhanshu.jpg' %}">
+                        </div>
+                        <div class="team-content">
+                            <h3 class="title">Sudhanshu</h3>
+                            <h6>Volunteer</h6>
+                            <span class="post"><a href="https://www.linkedin.com/in/ersudhanshu/"
+                                    class="fab fa-linkedin"></a></span>
+                        </div>
+                        <!-- <ul class="social">
+                            <li>
+                                <a href="https://www.linkedin.com/in/ersudhanshu/" class="fab fa-linkedin"></a>
+                            </li>
+                        </ul> -->
+                    </div>
+                </div>
+
+
+                <div class="col-lg-3 col-md-6 col-sm-6 Volunteer Yamunanagar">
+                    <div class="our-team">
+                        <div class="pic">
+                            <img src="{% static 'images/et/Teams/Sugandha Malhotra.jpg' %}">
+                        </div>
+                        <div class="team-content">
+                            <h3 class="title">Sugandha Malhotra</h3>
+                            <h6>Volunteer</h6>
+                            <span class="post"><a href="https://www.linkedin.com/in/sugandha-malhotra-a95685193/"
+                                    class="fab fa-linkedin"></a></span>
+                        </div>
+                        <!-- <ul class="social">
+                            <li>
+                                <a href="https://www.linkedin.com/in/sugandha-malhotra-a95685193/"
+                                    class="fab fa-linkedin"></a>
+                            </li>
+                        </ul> -->
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 col-sm-6 Volunteer Kurukshetra">
+                    <div class="our-team">
+                        <div class="pic">
+                            <img src="{% static 'images/et/Teams/Venu Gopal.jpg' %}">
+                        </div>
+                        <div class="team-content">
+                            <h3 class="title">Venu Gopal Singhal</h3>
+                            <h6>Volunteer </h6>
+                            <span class="post"><a href="https://www.linkedin.com/in/venugopal-singhal-520550170/"
+                                    class="fab fa-linkedin"></a></span>
+                        </div>
+                        <!-- <ul class="social">
+                            <li>
+                                <a href="https://www.linkedin.com/in/venugopal-singhal-520550170/"
+                                    class="fab fa-linkedin"></a>
+                            </li>
+                        </ul> -->
+                    </div>
+                </div>
+
+
+
+                <div class="col-lg-3 col-md-6 col-sm-6 Volunteer Rishikesh">
+                    <div class="our-team ">
+                        <div class="pic">
+                            <img src="{% static 'images/et/Teams/Vidhi Agrawal.jpg' %}">
+                        </div>
+                        <div class="team-content">
+                            <h3 class="title">Vidhi Agrawal</h3>
+                            <h6>Volunteer</h6>
+                            <span class="post"><a href="https://www.linkedin.com/in/vidhi-agrawal3/"
+                                    class="fab fa-linkedin"></a></span>
+                        </div>
+                        <!-- <ul class="social">
+                            <li>
+                                <a href="https://www.linkedin.com/in/vidhi-agrawal3/" class="fab fa-linkedin"></a>
+                            </li>
+                        </ul> -->
+                    </div>
+                </div>
+
+
+                <div class="col-lg-3 col-md-6 col-sm-6 Volunteer Uttar Pradesh">
+                    <div class="our-team ">
+                        <div class="pic">
+                            <img src="{% static 'images/et/Teams/Pratik Singhal.jpeg' %}">
+                        </div>
+                        <div class="team-content">
+                            <h3 class="title">Pratik Singhal</h3>
+                            <h6>Volunteer</h6>
+                            <span class="post"><a href="https://www.linkedin.com/in/pratik-singhal-808339208/"
+                                    class="fab fa-linkedin"></a></span>
+                        </div>
+                        <!-- <ul class="social">
+                            <li>
+                                <a href="https://www.linkedin.com/in/pratik-singhal-808339208/"
+                                    class="fab fa-linkedin"></a>
+                            </li>
+                        </ul> -->
+                    </div>
+                </div>
+
+
+
+
+                <div class="col-lg-3 col-md-6 col-sm-6 Volunteer Hisar">
+                    <div class="our-team">
+                        <div class="pic">
+                            <img src="{% static 'images/et/Teams/Yogesh yadav.jpg' %}">
+                        </div>
+                        <div class="team-content">
+                            <h3 class="title">Yogesh Yadav</h3>
+                            <h6>Volunteer</h6>
+                            <span class="post"><a href="https://www.linkedin.com/in/yogesh-kumar-2262841ab/"
+                                    class="fab fa-linkedin"></a></span>
+                        </div>
+                        <!-- <ul class="social">
+                            <li>
+                                <a href="https://www.linkedin.com/in/yogesh-kumar-2262841ab/"
+                                    class="fab fa-linkedin"></a>
+                            </li>
+                        </ul> -->
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 col-sm-6 Team Rewari Founder">
+                    <div class="our-team">
+                        <div class="pic">
+                            <img src="{% static 'images/et/Teams/Raghav Aggarwal.jpg' %}">
+                        </div>
+                        <div class="team-content">
+                            <h3 class="title">Raghav Aggarwal</h3>
+                            <h6>Co-Founder </h6>
+                            <span class="post"><a href="https://www.linkedin.com/in/avidraghav"
+                                    class="fab fa-linkedin"></a></span>
+                        </div>
+                        <!-- <ul class="social">
+                            <li>
+                                <a href="https://www.linkedin.com/in/avidraghav" class="fab fa-linkedin"></a>
+                            </li>
+                        </ul> -->
+                    </div>
+                </div>
+
+
+                <div class="col-lg-3 col-md-6 col-sm-6 Mentor Rewari">
+                    <div class="our-team ">
+                        <div class="pic">
+                            <img src="{% static 'images/et/Teams/Gaurav Sharma.jpg' %}">
+                        </div>
+                        <div class="team-content">
+                            <h3 class="title">Gaurav Sharma</h3>
+                            <h6>Mentor</h6>
+                            <span class="post"><a href="https://www.linkedin.com/in/dr-gaurav-sharma-527119148/"
+                                    class="fab fa-linkedin"></a></span>
+                        </div>
+                        <!-- <ul class="social">
+                            <li>
+                                <a href="https://www.linkedin.com/in/dr-gaurav-sharma-527119148/"
+                                    class="fab fa-linkedin"></a>
+                            </li>
+                        </ul> -->
+                    </div>
+                </div>
+
+
+                <div class="col-lg-3 col-md-6 col-sm-6 Volunteer Kurukshetra">
+                    <div class="our-team ">
+                        <div class="pic">
+                            <img src="{% static 'images/et/Teams/Ojasvita.jpg' %}">
+                        </div>
+                        <div class="team-content">
+                            <h3 class="title">Ojasvita</h3>
+                            <h6>Volunteer</h6>
+                            <span class="post"><a href="https://www.linkedin.com/in/ojasvita-2b184a1b4/"
+                                    class="fab fa-linkedin"></a></span>
+                        </div>
+                        <!-- <ul class="social">
+                            <li>
+                                <a href="https://www.linkedin.com/in/ojasvita-2b184a1b4/" class="fab fa-linkedin"></a>
+                            </li>
+                        </ul> -->
+                    </div>
+                </div>
+
+
+                <div class="col-lg-3 col-md-6 col-sm-6 Volunteer Delhi">
+                    <div class="our-team">
+                        <div class="pic">
+                            <img src="{% static 'images/et/Teams/Parshant.jpeg' %}">
+                        </div>
+                        <div class="team-content">
+                            <h3 class="title">Parshant Yadav</h3>
+                            <h6>Volunteer</h6>
+                            <span class="post"><a href="https://www.linkedin.com/in/parshant-yadav-500224202/"
+                                    class="fab fa-linkedin"></a></span>
+                        </div>
+                        <!-- <ul class="social">
+                            <li>
+                                <a href="https://www.linkedin.com/in/parshant-yadav-500224202/"
+                                    class="fab fa-linkedin"></a>
+                            </li>
+                        </ul> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--FOOTER-->
+    <footer>
+        <div class="footer">
+            <div class="row">
+                <div class="col-md-6">
+                    <a href="https://www.facebook.com/Etviridifoundation.org/"><i class="fab fa-facebook"></i></a>
+                    <a href="https://instagram.com/etviridifoundation?utm_medium=copy_link"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.linkedin.com/company/et-viridi-foundation"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                <div class="col-md-6 contact">
+                    <h6>Contact us on:</h6>
+                    <a href="mailto:etviridifoundation@gmail.com">
+                        <h6><i class="fas fa-envelope" style="font-size: smaller;"></i> etviridi@gmail.com</h6>
+                    </a>
+                    <a href="">
+                        <h6><i class="fas fa-phone-alt" style="font-size: smaller;"></i>+911203456789</h6>
+                    </a>
+
+                </div>
+            </div>
+
+            <div class="row">
+                <ul>
+                    <li><a href="{% url 'contact' %}">Contact us</a></li>
+                    <li><a href="#">Our Services</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#">Career</a></li>
+                </ul>
+            </div>
+
+            <div class="row">
+                <div class="container">
+                    <h6>ET Viridi Copyright © 2021 Et Viridi | All rights reserved.</h6>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="{% static 'js/custom.js' %}"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('.list').click(function(){
+                const value = $(this).attr('data-filter');
+                if (value == 'All') {
+                    $('.col-lg-3').show('1000');
+                }
+                else {
+                    $('.col-lg-3').not('.' + value).hide('1000');
+                    $('.col-lg-3').filter('.' + value).show('1000');
+                }
+            })
+        })
+
+        $('.list').click(function(){
+            $(this).addClass('active').siblings().removeClass('active');
+        })
+    </script>
+</body>
+
+</html>
